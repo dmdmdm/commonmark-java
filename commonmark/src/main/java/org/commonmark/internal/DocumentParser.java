@@ -142,6 +142,10 @@ public class DocumentParser implements ParserState {
             parseLine(line);
         }
 
+        if (!(input instanceof BufferedReader)) {	// djm
+        	bufferedReader.close();
+        }
+
         return finalizeAndProcess();
     }
 
