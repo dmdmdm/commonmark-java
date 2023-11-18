@@ -50,6 +50,10 @@ public class Html5Entities {
     private static Map<String, String> readEntities() {
         Map<String, String> entities = new HashMap<>();
         InputStream stream = Html5Entities.class.getResourceAsStream(ENTITY_PATH);
+        if (stream == null) {
+           System.err.println("Could not open " + ENTITY_PATH);
+            return entities;
+        }
         Charset charset = StandardCharsets.UTF_8;
         try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(stream, charset))) {
             String line;
